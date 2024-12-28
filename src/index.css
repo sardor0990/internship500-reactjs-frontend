@@ -1,0 +1,84 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Mulish';
+}
+p {
+	font-family: 'Mulish';
+}
+h1,
+h2,
+h3,
+a {
+	margin: 0;
+	text-decoration: none;
+}
+ul,
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%), #324ECF;	
+		
+
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('./assets/fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF')
+		format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro DisplayBold';
+	src: url('./assets/fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF')
+		format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SF Pro DisplayLight';
+	src: url('./assets/fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF')
+		format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.ant-select-selection {
+	color: black !important;
+	&::-webkit-input-placeholder {
+		color: white !important;
+	}
+	&:placeholder {
+		color: white !important;
+	}
+	:placeholder {
+		color: white !important;
+	}
+	::-webkit-input-placeholder {
+		color: white !important;
+	}
+}
+/* Global CSS file */
+
+
+  
+  .ant-input::placeholder {
+	color: #fffbfb !important; /* Change placeholder color */
+	 /* Ensures placeholder color is applied */
+  }
+  
+
+::-webkit-input-placeholder {
+	color: white !important;
+}

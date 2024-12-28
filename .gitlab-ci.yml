@@ -1,0 +1,52 @@
+stages:
+ - build
+ - deploy
+
+
+build-only-MR:
+ stage: build
+ tags:
+   - docker
+ image:
+   name: gcr.io/kaniko-project/executor:v1.23.2-debug
+   entrypoint: [ "" ]
+ script:
+   - /kaniko/executor
+     --context "${CI_PROJECT_DIR}"
+     --cache=true
+     --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+     --no-push
+     --cache-repo "${CI_REGISTRY_IMAGE}/cache"
+ only:
+   - merge_requests
+
+
+build:
+ stage: build
+ tags:
+   - docker
+ image:
+   name: gcr.io/kaniko-project/executor:v1.23.2-debug
+   entrypoint: [ "" ]
+ script:
+   - /kaniko/executor
+     --cache=true
+     --context "${CI_PROJECT_DIR}"
+     --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+     --destination "${CI_REGISTRY_IMAGE}:latest"
+ only:
+   - main
+
+
+deploy:
+ stage: deploy
+ tags:
+   - docker
+ image:
+   name: bitnami/kubectl:latest
+   entrypoint: [""]
+ script:
+   - kubectl set image -n internship500-itskills-uz deployment/internship500-frontend-js-react internship500-frontend-js-react=${CI_REGISTRY_IMAGE}:latest
+   - kubectl rollout restart deploy -n internship500-itskills-uz internship500-frontend-js-react
+ only:
+   - main
